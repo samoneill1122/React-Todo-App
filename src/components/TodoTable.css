@@ -1,0 +1,5 @@
+.fixed-width-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 10rem;
+}

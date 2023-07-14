@@ -4,9 +4,11 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Textarea,
   InputGroup,
   InputLeftElement,
   Text,
+  Heading,
 } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -33,7 +35,10 @@ const TodoForm = ({ onSubmit }: Props) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormControl>
-        <FormLabel htmlFor="text">Todo Details</FormLabel>
+        {/* <FormLabel htmlFor="text">Todo Details</FormLabel> */}
+        <Heading as="h4" size="md" marginBottom={2}>
+          Add Todo
+        </Heading>
         <InputGroup>
           <InputLeftElement pointerEvents="none">
             <EditIcon></EditIcon>
@@ -41,9 +46,15 @@ const TodoForm = ({ onSubmit }: Props) => {
           <Input
             {...register("text")}
             id="text"
-            placeholder="todo"
+            placeholder="todo details"
             type="text"
           />
+          {/* <Textarea
+            {...register("text")}
+            id="text"
+            placeholder="todo"
+            // type="text"
+          /> */}
         </InputGroup>
         {errors.text && <Text color="crimson">{errors.text.message}</Text>}
       </FormControl>

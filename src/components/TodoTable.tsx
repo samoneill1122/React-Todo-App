@@ -9,8 +9,11 @@ import {
   Stack,
   Button,
   TableCaption,
+  VStack,
+  HStack,
 } from "@chakra-ui/react";
 import { Todo } from "../App";
+import "./TodoTable.css";
 
 interface Props {
   todos: Todo[];
@@ -21,7 +24,13 @@ interface Props {
 const TodoTable = ({ todos, onDeleteTodo, onMarkTodo }: Props) => {
   return (
     <TableContainer>
-      <Table variant="simple">
+      <Table
+        id="todoTable"
+        variant="striped"
+        size={{ base: "sm", md: "md" }}
+        // layout="fixed"
+        style={{ whiteSpace: "nowrap" }}
+      >
         <Thead>
           <Tr>
             <Th>Id</Th>
@@ -38,30 +47,33 @@ const TodoTable = ({ todos, onDeleteTodo, onMarkTodo }: Props) => {
               <Td>{todo.id}</Td>
               <Td>{todo.createDate.toString()}</Td>
               <Td>{todo.lastModified.toString()}</Td>
-              <Td>{todo.text}</Td>
+              <Td className="fixed-width-cell">{todo.text}</Td>
               <Td>{todo.status}</Td>
               <Td>
-                <Stack direction="row" spacing={1} align="center">
-                  <Button colorScheme="blue" size="sm">
-                    Edit
-                  </Button>
-                  <Button
-                    colorScheme="red"
-                    size="sm"
-                    onClick={() => onDeleteTodo(todo)}
-                  >
-                    Delete
-                  </Button>
+                <VStack direction="row" spacing={1} align="center">
+                  <HStack spacing={1}>
+                    <Button colorScheme="blue" size={{ base: "xs", md: "sm" }}>
+                      Edit
+                    </Button>
+                    <Button
+                      colorScheme="red"
+                      size={{ base: "xs", md: "sm" }}
+                      onClick={() => onDeleteTodo(todo)}
+                    >
+                      Delete
+                    </Button>
+                  </HStack>
                   {todo.status !== "Done" && (
                     <Button
                       colorScheme="green"
-                      size="sm"
+                      size={{ base: "xs", md: "sm" }}
                       onClick={() => onMarkTodo(todo)}
+                      width="100%"
                     >
                       Mark as Done
                     </Button>
                   )}
-                </Stack>
+                </VStack>
               </Td>
             </Tr>
           ))}

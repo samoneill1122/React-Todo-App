@@ -2,6 +2,7 @@ import moment from "moment";
 import { useState } from "react";
 import TodoTable from "./components/TodoTable";
 import TodoForm from "./components/TodoForm";
+import { Box, Container } from "@chakra-ui/react";
 
 export interface Todo {
   id: number;
@@ -53,27 +54,41 @@ function App() {
   return (
     <>
       {/* add todo */}
-      <TodoForm
-        onSubmit={(todo) =>
-          setTodos([
-            ...todos,
-            {
-              ...todo,
-              id: todos.length + 1,
-              createDate: moment(new Date()).format("MMMM Do YYYY, h:mm:ss a"),
-              lastModified: moment(new Date()).format(
-                "MMMM Do YYYY, h:mm:ss a"
-              ),
-              status: "Pending",
-            },
-          ])
-        }
-      />
-      <TodoTable
-        todos={todos}
-        onDeleteTodo={deleteTodo}
-        onMarkTodo={markTodoAsDone}
-      />
+      <Container
+        maxW={{
+          base: "sm",
+          md: "md",
+          lg: "container.md",
+          xl: "container.lg",
+        }}
+        marginTop={20}
+      >
+        <Box marginBottom={10}>
+          <TodoForm
+            onSubmit={(todo) =>
+              setTodos([
+                ...todos,
+                {
+                  ...todo,
+                  id: todos.length + 1,
+                  createDate: moment(new Date()).format(
+                    "MMMM Do YYYY, h:mm:ss a"
+                  ),
+                  lastModified: moment(new Date()).format(
+                    "MMMM Do YYYY, h:mm:ss a"
+                  ),
+                  status: "Pending",
+                },
+              ])
+            }
+          />
+        </Box>
+        <TodoTable
+          todos={todos}
+          onDeleteTodo={deleteTodo}
+          onMarkTodo={markTodoAsDone}
+        />
+      </Container>
     </>
   );
 }
