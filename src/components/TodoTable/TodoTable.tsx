@@ -1,34 +1,28 @@
 import {
-  TableContainer,
+  Button,
+  HStack,
   Table,
-  Thead,
-  Tr,
-  Th,
+  TableCaption,
+  TableContainer,
   Tbody,
   Td,
-  Stack,
-  Button,
-  TableCaption,
+  Th,
+  Thead,
+  Tr,
   VStack,
-  HStack,
 } from "@chakra-ui/react";
-import { Todo } from "../App";
+import { Link } from "react-router-dom";
+import useTodoListStore from "../../store";
 import "./TodoTable.css";
 
-interface Props {
-  todos: Todo[];
-  onDeleteTodo: (todo: Todo) => void;
-  onMarkTodo: (todo: Todo) => void;
-}
-
-const TodoTable = ({ todos, onDeleteTodo, onMarkTodo }: Props) => {
+const TodoTable = () => {
+  const { todos, deleteTodo, markTodoAsDone } = useTodoListStore();
   return (
     <TableContainer>
       <Table
         id="todoTable"
         variant="striped"
         size={{ base: "sm", md: "md" }}
-        // layout="fixed"
         style={{ whiteSpace: "nowrap" }}
       >
         <Thead>
@@ -51,28 +45,32 @@ const TodoTable = ({ todos, onDeleteTodo, onMarkTodo }: Props) => {
               <Td>{todo.status}</Td>
               <Td>
                 <VStack direction="row" spacing={1} align="center">
-                  <HStack spacing={1}>
-                    <Button colorScheme="blue" size={{ base: "xs", md: "sm" }}>
+                  <HStack spacing={1} marginX={0}>
+                    {/* <Button colorScheme="blue" size={{ base: "xs", md: "sm" }}>
                       Edit
-                    </Button>
+                    </Button> */}
+                    <Link to={`/todos/${todo.id}/edit`}>Edit</Link>
                     <Button
                       colorScheme="red"
                       size={{ base: "xs", md: "sm" }}
-                      onClick={() => onDeleteTodo(todo)}
+                      onClick={() => deleteTodo(todo.id)}
                     >
                       Delete
                     </Button>
                   </HStack>
-                  {todo.status !== "Done" && (
-                    <Button
-                      colorScheme="green"
-                      size={{ base: "xs", md: "sm" }}
-                      onClick={() => onMarkTodo(todo)}
-                      width="100%"
-                    >
-                      Mark as Done
-                    </Button>
-                  )}
+                  <HStack>
+                    {todo.status !== "Done" && (
+                      <Button
+                        colorScheme="green"
+                        size={{ base: "xs", md: "sm" }}
+                        onClick={() => markTodoAsDone(todo.id)}
+                        width="100%"
+                      >
+                        Mark as Done
+                      </Button>
+                    )}
+                    <Link to={`/todos/${todo.id}`}>View</Link>
+                  </HStack>
                 </VStack>
               </Td>
             </Tr>
