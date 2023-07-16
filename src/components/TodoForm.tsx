@@ -9,6 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -28,8 +29,14 @@ const TodoForm = ({ onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState,
+    formState: { errors, isSubmitSuccessful },
   } = useForm<TodoFormData>({ resolver: zodResolver(schema) });
+
+  useEffect(() => {
+    if (isSubmitSuccessful) reset({ text: "" });
+  }, [formState, reset]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

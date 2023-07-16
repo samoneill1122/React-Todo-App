@@ -32,17 +32,17 @@ const ExpandedTodoPage = () => {
       </Box>
       <Card>
         <CardHeader>
-          <Heading size="md" textAlign="center">
+          <Heading size="md" textAlign="center" mb={0}>
             Todo Details
           </Heading>
         </CardHeader>
 
-        <Divider />
+        <Divider m={0} />
 
         <CardBody>
           <Stack divider={<StackDivider />} spacing="4">
             <Box>
-              <Heading size="xs" textTransform="uppercase">
+              <Heading size="sm" textTransform="uppercase">
                 Id
               </Heading>
               <Text pt="2" fontSize="sm">
@@ -50,7 +50,7 @@ const ExpandedTodoPage = () => {
               </Text>
             </Box>
             <Box>
-              <Heading size="xs" textTransform="uppercase">
+              <Heading size="sm" textTransform="uppercase">
                 Created On
               </Heading>
               <Text pt="2" fontSize="sm">
@@ -58,7 +58,7 @@ const ExpandedTodoPage = () => {
               </Text>
             </Box>
             <Box>
-              <Heading size="xs" textTransform="uppercase">
+              <Heading size="sm" textTransform="uppercase">
                 Last Modified
               </Heading>
               <Text pt="2" fontSize="sm">
@@ -66,7 +66,7 @@ const ExpandedTodoPage = () => {
               </Text>
             </Box>
             <Box>
-              <Heading size="xs" textTransform="uppercase">
+              <Heading size="sm" textTransform="uppercase">
                 Todo
               </Heading>
               <Text pt="2" fontSize="sm">
@@ -74,7 +74,7 @@ const ExpandedTodoPage = () => {
               </Text>
             </Box>
             <Box>
-              <Heading size="xs" textTransform="uppercase">
+              <Heading size="sm" textTransform="uppercase">
                 Status
               </Heading>
               <Text
