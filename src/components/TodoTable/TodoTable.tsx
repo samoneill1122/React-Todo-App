@@ -37,7 +37,9 @@ const TodoTable = () => {
           {todos.map((todo) => (
             <Tr key={todo.id}>
               <Td>{todo.id}</Td>
-              <Td className="fixed-width-cell">{todo.text}</Td>
+              <Td id="todoTextCell" className="overflow-cell">
+                {todo.text}
+              </Td>
               <Td>{todo.status}</Td>
               <Td>
                 <HStack spacing={1}>

@@ -1,5 +1,18 @@
-.fixed-width-cell {
+.overflow-cell {
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 10rem;
+}
+
+#todoTextCell {
+  max-width: 30rem;
+}
+@media (max-width: 1280px) {
+  #todoTextCell {
+    max-width: 14rem;
+  }
+}
+@media (max-width: 992px) {
+  #todoTextCell {
+    max-width: 10rem;
+  }
 }
