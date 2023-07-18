@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
-import { Todo } from "../../store";
+import useTodoListStore from "../../store";
 import "./TodoActionsButton.css";
 
 interface Props {
-  todo: Todo;
-  onDeleteTodo: (id: number) => void;
-  onMarkTodo: (id: number) => void;
+  todoId: number;
 }
 
-const TodoActionsButton = ({ todo, onDeleteTodo, onMarkTodo }: Props) => {
+const TodoActionsButton = ({ todoId }: Props) => {
+  const { deleteTodo, markTodoAsDone } = useTodoListStore();
   return (
     <div className="dropdown">
       <button
@@ -21,20 +20,20 @@ const TodoActionsButton = ({ todo, onDeleteTodo, onMarkTodo }: Props) => {
       </button>
       <ul className="dropdown-menu">
         <li>
-          <Link to={`/todos/${todo.id}/edit`} className="dropdown-item">
+          <Link to={`/todos/${todoId}/edit`} className="dropdown-item">
             Edit
           </Link>
         </li>
         <li>
-          <button
-            className="dropdown-item"
-            onClick={() => onDeleteTodo(todo.id)}
-          >
+          <button className="dropdown-item" onClick={() => deleteTodo(todoId)}>
             Delete
           </button>
         </li>
         <li>
-          <button className="dropdown-item" onClick={() => onMarkTodo(todo.id)}>
+          <button
+            className="dropdown-item"
+            onClick={() => markTodoAsDone(todoId)}
+          >
             Mark Todo as Done
           </button>
         </li>
