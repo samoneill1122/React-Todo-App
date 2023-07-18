@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import useTodoListStore from "../../store";
 import "./TodoActionsButton.css";
+import { todo } from "node:test";
 
 interface Props {
   todoId: number;
+  hideMarkTodo: boolean;
 }
 
-const TodoActionsButton = ({ todoId }: Props) => {
+const TodoActionsButton = ({ todoId, hideMarkTodo }: Props) => {
   const { deleteTodo, markTodoAsDone } = useTodoListStore();
   return (
     <div className="dropdown">
@@ -30,12 +32,14 @@ const TodoActionsButton = ({ todoId }: Props) => {
           </button>
         </li>
         <li>
-          <button
-            className="dropdown-item"
-            onClick={() => markTodoAsDone(todoId)}
-          >
-            Mark Todo as Done
-          </button>
+          {!hideMarkTodo && (
+            <button
+              className="dropdown-item"
+              onClick={() => markTodoAsDone(todoId)}
+            >
+              Mark Todo as Done
+            </button>
+          )}
         </li>
       </ul>
     </div>

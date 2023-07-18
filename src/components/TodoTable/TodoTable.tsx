@@ -40,7 +40,10 @@ const TodoTable = () => {
                 </Td>
                 <Td>{todo.status}</Td>
                 <Td>
-                  <TodoActionsButton todoId={todo.id} />
+                  <TodoActionsButton
+                    todoId={todo.id}
+                    hideMarkTodo={todo.status === "Done" ? true : false}
+                  />
                 </Td>
               </Tr>
             ))}
