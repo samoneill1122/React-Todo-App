@@ -1,3 +1,16 @@
 .dropdown-item:active {
   background-color: #f8f9fa;
 }
+
+#editButton:hover {
+  color: dodgerblue;
+  background-color: ghostwhite;
+}
+#deleteButton:hover {
+  color: red;
+  background-color: ghostwhite;
+}
+#markTodoButton:hover {
+  color: green;
+  background-color: ghostwhite;
+}

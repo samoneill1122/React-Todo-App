@@ -22,18 +22,27 @@ const TodoActionsButton = ({ todoId, hideMarkTodo }: Props) => {
       </button>
       <ul className="dropdown-menu">
         <li>
-          <Link to={`/todos/${todoId}/edit`} className="dropdown-item">
+          <Link
+            id="editButton"
+            to={`/todos/${todoId}/edit`}
+            className="dropdown-item"
+          >
             Edit
           </Link>
         </li>
         <li>
-          <button className="dropdown-item" onClick={() => deleteTodo(todoId)}>
+          <button
+            id="deleteButton"
+            className="dropdown-item"
+            onClick={() => deleteTodo(todoId)}
+          >
             Delete
           </button>
         </li>
         <li>
           {!hideMarkTodo && (
             <button
+              id="markTodoButton"
               className="dropdown-item"
               onClick={() => markTodoAsDone(todoId)}
             >
