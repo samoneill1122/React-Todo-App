@@ -11,6 +11,7 @@ import {
 import useTodoListStore from "../../store";
 import TodoActionsButton from "../TodoActionsButton/TodoActionsButton";
 import "./TodoTable.css";
+import { HiOutlineDotsHorizontal } from "react-icons/hi";
 
 const TodoTable = () => {
   const { todos } = useTodoListStore();
@@ -28,7 +29,9 @@ const TodoTable = () => {
               <Th>Id</Th>
               <Th>Todo</Th>
               <Th>Status</Th>
-              <Th></Th>
+              <Th>
+                <span id="actionsHeading">Actions</span>
+              </Th>
             </Tr>
           </Thead>
           <Tbody>

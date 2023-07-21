@@ -6,6 +6,10 @@
 #todoTextCell {
   max-width: 30rem;
 }
+#actionsHeading {
+  display: none;
+}
+
 @media (max-width: 1280px) {
   #todoTextCell {
     max-width: 14rem;
@@ -14,5 +18,8 @@
 @media (max-width: 992px) {
   #todoTextCell {
     max-width: 10rem;
+  }
+  #actionsHeading {
+    display: inline;
   }
 }

@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import useTodoListStore from "../../store";
 import "./TodoActionsButton.css";
 import { todo } from "node:test";
+import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import { useEffect, useState } from "react";
 
 interface Props {
   todoId: number;
@@ -10,16 +12,32 @@ interface Props {
 
 const TodoActionsButton = ({ todoId, hideMarkTodo }: Props) => {
   const { deleteTodo, markTodoAsDone } = useTodoListStore();
+  const [mobileView, setMobileView] = useState(false);
+
+  const mql = window.matchMedia("(max-width: 992px)");
+
+  useEffect(() => {
+    setMobileView(mql.matches);
+    console.log(mobileView);
+  }, [mobileView]);
+
   return (
     <div className="dropdown">
-      <button
+      {/* <button
         className="btn btn-secondary dropdown-toggle"
         type="button"
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
         Options
-      </button>
+      </button> */}
+      <HiOutlineDotsHorizontal
+        className="dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        size={20}
+      />
       <ul className="dropdown-menu">
         <li>
           <Link
