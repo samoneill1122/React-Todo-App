@@ -1,9 +1,7 @@
+import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import useTodoListStore from "../../store";
 import "./TodoActionsButton.css";
-import { todo } from "node:test";
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
-import { useEffect, useState } from "react";
 
 interface Props {
   todoId: number;
@@ -12,14 +10,6 @@ interface Props {
 
 const TodoActionsButton = ({ todoId, hideMarkTodo }: Props) => {
   const { deleteTodo, markTodoAsDone } = useTodoListStore();
-  const [mobileView, setMobileView] = useState(false);
-
-  const mql = window.matchMedia("(max-width: 992px)");
-
-  useEffect(() => {
-    setMobileView(mql.matches);
-    console.log(mobileView);
-  }, [mql]);
 
   return (
     <div className="dropdown">
