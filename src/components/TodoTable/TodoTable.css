@@ -9,6 +9,12 @@
 #actionsHeading {
   display: none;
 }
+#actionsElipses {
+  display: none;
+}
+#actionsButton {
+  display: block;
+}
 
 @media (max-width: 1280px) {
   #todoTextCell {
@@ -21,5 +27,11 @@
   }
   #actionsHeading {
     display: inline;
+  }
+  #actionsElipses {
+    display: block;
+  }
+  #actionsButton {
+    display: none;
   }
 }

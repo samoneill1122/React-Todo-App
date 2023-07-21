@@ -19,19 +19,21 @@ const TodoActionsButton = ({ todoId, hideMarkTodo }: Props) => {
   useEffect(() => {
     setMobileView(mql.matches);
     console.log(mobileView);
-  }, [mobileView]);
+  }, [mql]);
 
   return (
     <div className="dropdown">
-      {/* <button
+      <button
+        id="actionsButton"
         className="btn btn-secondary dropdown-toggle"
         type="button"
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
         Options
-      </button> */}
+      </button>
       <HiOutlineDotsHorizontal
+        id="actionsElipses"
         className="dropdown-toggle"
         type="button"
         data-bs-toggle="dropdown"
