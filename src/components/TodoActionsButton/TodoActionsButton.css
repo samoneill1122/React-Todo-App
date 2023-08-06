@@ -2,6 +2,10 @@
   background-color: #f8f9fa;
 }
 
+#viewButton:hover {
+  color: green;
+  background-color: ghostwhite;
+}
 #editButton:hover {
   color: dodgerblue;
   background-color: ghostwhite;

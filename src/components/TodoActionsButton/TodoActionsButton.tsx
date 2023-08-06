@@ -33,6 +33,15 @@ const TodoActionsButton = ({ todoId, hideMarkTodo }: Props) => {
       <ul className="dropdown-menu">
         <li>
           <Link
+            id="viewButton"
+            to={`/todos/${todoId}`}
+            className="dropdown-item"
+          >
+            View
+          </Link>
+        </li>
+        <li>
+          <Link
             id="editButton"
             to={`/todos/${todoId}/edit`}
             className="dropdown-item"

@@ -11,10 +11,10 @@ import {
 import useTodoListStore from "../../store";
 import TodoActionsButton from "../TodoActionsButton/TodoActionsButton";
 import "./TodoTable.css";
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
 
 const TodoTable = () => {
   const { todos } = useTodoListStore();
+
   return (
     <>
       <TableContainer>

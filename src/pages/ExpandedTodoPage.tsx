@@ -11,11 +11,12 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Link, useParams } from "react-router-dom";
-import { todoList } from "../data/todos";
+import useTodoListStore from "../store";
 
 const ExpandedTodoPage = () => {
   const { id } = useParams();
-  const todo = todoList.filter((t) => t.id === parseInt(id!))[0];
+  const { todos } = useTodoListStore();
+  const todo = todos.filter((t) => t.id === parseInt(id!))[0];
 
   return (
     <Container
