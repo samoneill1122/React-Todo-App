@@ -1,16 +1,10 @@
 import { Box, Container } from "@chakra-ui/react";
 import TodoForm from "../components/TodoForm";
 import TodoTable from "../components/TodoTable/TodoTable";
-import useTodoListStore, { Todo } from "../store";
-import apiClient, { CanceledError } from "../services/api-client";
-import { useEffect, useState } from "react";
+import useTodoListStore from "../store";
 
 const HomePage = () => {
   const { addTodo } = useTodoListStore();
-
-  useEffect(() => {
-    apiClient.get<Todo>("/todos").then((res) => console.log(res));
-  }, []);
 
   return (
     <>

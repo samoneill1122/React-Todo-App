@@ -8,12 +8,14 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import useTodoListStore from "../../store";
+import useTodos from "../../hooks/useTodos";
 import TodoActionsButton from "../TodoActionsButton/TodoActionsButton";
 import "./TodoTable.css";
 
 const TodoTable = () => {
-  const { todos } = useTodoListStore();
+  // const { todos } = useTodoListStore();
+  const { data, error, isLoading } = useTodos();
+  console.log(data?.results);
 
   return (
     <>
@@ -35,7 +37,7 @@ const TodoTable = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {todos.map((todo) => (
+            {data?.results.map((todo) => (
               <Tr key={todo.id}>
                 <Td>{todo.id}</Td>
                 <Td id="todoTextCell" className="overflow-cell">
